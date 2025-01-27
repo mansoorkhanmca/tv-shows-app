@@ -1,6 +1,6 @@
 # TV SHOWS 
 
-This project was generated with React JS 18.0.14 and Spring Boot 3.4.2
+This project is created with React JS 18.0.14 and Spring Boot 3.4.2
 
 ## Run following command from root level to start the application using Docker
 
@@ -21,6 +21,7 @@ http://localhost (or) http://localhost:80
 
 cd tv-sows && npm start
 
+## AND
 
 ## Run the following command (from root level) in second terminal to start Back End Application
 
