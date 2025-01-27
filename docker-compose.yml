@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Spring Boot Backend
+  backend:
+    build:
+      context: ./com.shows.tv
+      dockerfile: Dockerfile
+    container_name: spring-boot-app
+    ports:
+      - "8080:8080"  # Expose Spring Boot on port 8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    networks:
+      - app-network
+    
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./tv-shows
+      dockerfile: Dockerfile
+    container_name: react-app
+    ports:
+      - "80:80"  # Expose React frontend on port 80
+    networks:
+      - app-network
+    depends_on:
+      # Ensure that the backend is built first
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:80 # API URL for React to talk to Spring Boot
+
+networks:
+  app-network:
+    driver: bridge
